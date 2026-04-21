@@ -10,9 +10,19 @@ import static com.pluralsight.ui.Console.*;
 public static void main(String[] arg) throws IOException {
         ArrayList<Product> products = ProductLoader.loadProduct();
 
-        int userInput = productMenuSystem();
+        String productSystemMenuMsg = """
+            What do you want to do?
+            1 - List all product
+            2 - Lookup product by Id
+            3 - Find all product within a price range
+            4 - Add a new product
+            5 - Quit application
+            """;
 
         while (true){
+            System.out.println(productSystemMenuMsg);
+            int userInput = productMenuSystem();
+
             switch (userInput) {
                 case 1:
                     listAllProduct(products);
@@ -34,7 +44,7 @@ public static void main(String[] arg) throws IOException {
                     System.out.printf("Invalid option, please try again. \n");
 
             }
-                userInput = productMenuSystem();
+
         }
 
     }
@@ -46,13 +56,6 @@ public static void main(String[] arg) throws IOException {
 //   Product Menu System
 
 public static int productMenuSystem() {
-    System.out.println("What do you want to do?\n" +
-        "1 - List all product\n" +
-        "2 - Lookup product by Id\n" +
-        "3 - Find all product within a price range \n" +
-        "4 - Add a new product \n" +
-        "5 - Quit application \n");
-
     return Console.askForInt("Please enter a command:");
 
 }

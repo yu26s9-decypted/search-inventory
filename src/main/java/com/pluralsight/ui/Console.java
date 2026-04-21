@@ -16,7 +16,7 @@ public class Console {
                 return result;
             } catch (Exception e) {
                 scanner.nextLine();
-                System.out.printf("Your value is not valid. please try again\n" + e.getMessage());
+                System.out.printf("Your value is not valid. please try again\n");
 
             }
         }
@@ -37,7 +37,7 @@ public class Console {
                 scanner.nextLine();
                 return result;
             } catch (Exception e){
-                System.out.printf("This must be a Integer value." + e.getMessage());
+                System.out.printf("This must be a Integer value.\n");
                 scanner.nextLine();
             }
         }
@@ -51,7 +51,7 @@ public class Console {
                String userInput = scanner.nextLine();
                return userInput.equalsIgnoreCase("YES");
            } catch (Exception e) {
-               System.out.println("Your value must be a boolean." + e.getMessage());
+               System.out.println("Your value must be a boolean.\n");
                scanner.nextLine();
            }
         }

@@ -94,7 +94,7 @@ public static ArrayList<Product> findProductByWithinPriceRange(ArrayList<Product
 
     for(Product p : products) {
 
-        if (askMaxPrice > (p.getProductPrice()) && askMinPrice < (p.getProductPrice())){
+        if (askMaxPrice >= (p.getProductPrice()) && askMinPrice <= (p.getProductPrice())){
             matchingItems.add(p);
         }
 

@@ -24,11 +24,17 @@ public class Console {
 
     public static int askForInt(String prompt) {
 
-        System.out.print(prompt);
-        int result =  scanner.nextInt();
-        scanner.nextLine();
-        return result;
+        while(true) {
+            try {
+                System.out.print(prompt);
+                int result = scanner.nextInt();
+                scanner.nextLine();
+                return result;
+            } catch (Exception e){
+                System.out.printf("This must be a Integer value.");
 
+            }
+        }
     }
 
 

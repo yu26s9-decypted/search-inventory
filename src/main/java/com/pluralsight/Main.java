@@ -45,32 +45,17 @@ public static void main(String[] arg) throws IOException {
 //   Product Menu System
 
 public static int productMenuSystem() {
-    boolean validInput = false;
-    int input = 0;
-    while (!validInput) {
-        try {
-            System.out.println("What do you want to do?\n" +
-                    "1 - List all product\n" +
-                    "2 - Lookup product by Id\n" +
-                    "3 - Find all product within a price range \n" +
-                    "4 - Add a new product \n" +
-                    "5 - Quit application \n" +
-                    "Enter your command:"
+    System.out.println("What do you want to do?\n" +
+        "1 - List all product\n" +
+        "2 - Lookup product by Id\n" +
+        "3 - Find all product within a price range \n" +
+        "4 - Add a new product \n" +
+        "5 - Quit application \n");
 
-            );
-
-            input = scanner.nextInt();
-            scanner.nextLine();
-            validInput = true;
-
-        } catch (InputMismatchException e) {
-            System.out.println("Sorry that is not a valid input. Please try again");
-            scanner.nextLine();
+    return Console.askForInt("Please enter a command:");
 
 
-        }
-    }
-    return input;
+
 }
 
 public static void listAllProduct(ArrayList<Product> products){

@@ -32,7 +32,7 @@ public class Console {
                 return result;
             } catch (Exception e){
                 System.out.printf("This must be a Integer value.");
-
+                scanner.nextLine();
             }
         }
     }

@@ -1,10 +1,11 @@
 import com.pluralsight.Product;
 import com.pluralsight.data.ProductLoader;
+import com.pluralsight.data.ProductWriter;
 import com.pluralsight.ui.Console;
 
-import static com.pluralsight.ui.Console.askForDouble;
-import static com.pluralsight.ui.Console.scanner;
 import java.io.*;
+
+import static com.pluralsight.ui.Console.*;
 
 public static void main(String[] arg) throws IOException {
         ArrayList<Product> products = ProductLoader.loadProduct();
@@ -24,8 +25,8 @@ public static void main(String[] arg) throws IOException {
                     findProductByWithinPriceRange(products);
                     break;
                 case 4:
+                    addNewProduct(products);
                     break;
-                //TODO
                 case 5:
                     System.out.println("Thank you have a nice day!");
                     return;
@@ -53,8 +54,6 @@ public static int productMenuSystem() {
         "5 - Quit application \n");
 
     return Console.askForInt("Please enter a command:");
-
-
 
 }
 
@@ -104,4 +103,20 @@ public static ArrayList<Product> findProductByWithinPriceRange(ArrayList<Product
     System.out.println("Found " + matchingItems.size() + (matchingItems.size() == 1 ? " result." : " results." ));
     displayProduct(matchingItems);
     return matchingItems;
+}
+
+public static void addNewProduct(ArrayList<Product> products) {
+    int addNewProductId = askForInt("What's the product id: ");
+    String addNewProductName = askForString("What's the product name: ");
+    double addNewProductPrice = askForDouble("What's the price of this product: ");
+    Product addNewProduct = new Product(addNewProductId, addNewProductName, addNewProductPrice);
+    products.add(addNewProduct);
+    try {
+        ProductWriter.writeProduct(addNewProduct);
+    } catch (IOException e){
+        System.out.println("An error occured while trying to update the product dateset." + e.getMessage() + e.getCause());
+
+    }
+    System.out.println("Product was added to the dateset.");
+
 }

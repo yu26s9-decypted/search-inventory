@@ -8,12 +8,18 @@ public class Console {
 
 
     public static double askForDouble(String prompt) {
+        while(true) {
+            try {
+                System.out.print(prompt);
+                double result = scanner.nextDouble();
+                scanner.nextLine();
+                return result;
+            } catch (Exception e) {
+                scanner.nextLine();
+                System.out.printf("Your value is not valid. please try again\n" + e.getMessage());
 
-        System.out.print(prompt);
-        double result =  scanner.nextDouble();
-        scanner.nextLine();
-        return result;
-
+            }
+        }
     }
 
     public static String askForString(String prompt) {
@@ -31,7 +37,7 @@ public class Console {
                 scanner.nextLine();
                 return result;
             } catch (Exception e){
-                System.out.printf("This must be a Integer value.");
+                System.out.printf("This must be a Integer value." + e.getMessage());
                 scanner.nextLine();
             }
         }
@@ -39,10 +45,16 @@ public class Console {
 
 
     public static boolean askForBoolean(String prompt) {
-        System.out.print(prompt);
-        String userInput = scanner.nextLine();
-        return userInput.equalsIgnoreCase("YES");
-        //opportunity to enhance this with some error protection.
+        while (true) {
+           try {
+               System.out.print(prompt);
+               String userInput = scanner.nextLine();
+               return userInput.equalsIgnoreCase("YES");
+           } catch (Exception e) {
+               System.out.println("Your value must be a boolean." + e.getMessage());
+               scanner.nextLine();
+           }
+        }
     }
 
 }

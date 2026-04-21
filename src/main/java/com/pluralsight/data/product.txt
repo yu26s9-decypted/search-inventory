@@ -18,3 +18,5 @@
 2038|Gaming Chair (Ergonomic)|189.99
 2039|Laptop Cooling Pad|27.99
 2040|Ethernet Cable 25ft Cat6|14.49
+4002|Cyberbunk 2077 Limited Edition|99.99
+4040|The Most Expensive Broom In the World|9999999.0

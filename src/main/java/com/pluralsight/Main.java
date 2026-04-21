@@ -1,26 +1,13 @@
 import com.pluralsight.Product;
+import com.pluralsight.data.ProductLoader;
 import com.pluralsight.ui.Console;
 
 import static com.pluralsight.ui.Console.askForDouble;
 import static com.pluralsight.ui.Console.scanner;
+import java.io.*;
 
 public static void main(String[] arg) throws IOException {
-    String fileName = "src/main/java/com/pluralsight/data/product.txt";
-    FileReader fileReader = new FileReader(fileName);
-    BufferedReader bufferedReader = new BufferedReader(fileReader);
-    ArrayList<Product> products = new ArrayList<>();
-
-
-    String product;
-
-    while((product = bufferedReader.readLine()) != null ) {
-        String[] productData = product.split("\\|");
-        int productId = Integer.parseInt(productData[0]);
-        String productName = productData[1];
-        double productPrice = Double.parseDouble(productData[2]);
-        Product p = new Product(productId, productName, productPrice);
-        products.add(p);
-    }
+        ArrayList<Product> products = ProductLoader.loadProduct();
 
         int userInput = productMenuSystem();
 
@@ -40,7 +27,6 @@ public static void main(String[] arg) throws IOException {
                     break;
                 //TODO
                 case 5:
-                    bufferedReader.close();
                     System.out.println("Thank you have a nice day!");
                     return;
                 default:

@@ -1,6 +1,7 @@
 import com.pluralsight.Product;
 import com.pluralsight.ui.Console;
 
+import static com.pluralsight.ui.Console.askForDouble;
 import static com.pluralsight.ui.Console.scanner;
 
 public static void main(String[] arg) throws IOException {
@@ -33,7 +34,7 @@ public static void main(String[] arg) throws IOException {
 
                     break;
                 case 3:
-                //TODO
+                    findProductByWithinPriceRange(products);
                     break;
                 case 4:
                     break;
@@ -94,7 +95,7 @@ public static void listAllProduct(ArrayList<Product> products){
 public static void displayProduct(ArrayList<Product> products){
     for(int i = 0; i < products.size(); i++){
         Product p = products.get(i);
-        System.out.printf("\n %d %s $%.2f \n", p.getProductId(), p.getProductName(), p.getProductPrice());
+        System.out.printf("%d %s $%.2f\n", p.getProductId(), p.getProductName(), p.getProductPrice());
     }
 }
 
@@ -110,4 +111,26 @@ public static void findProductById(ArrayList<Product> products){
     }
     System.out.printf("Cannot find a product with this id. \n");
 
+}
+
+public static ArrayList<Product> findProductByWithinPriceRange(ArrayList<Product> products) {
+    double askMinPrice = askForDouble("What's the minimum price");
+    double askMaxPrice = askForDouble("What's the maximum price");
+
+    ArrayList<Product> matchingItems = new ArrayList<>();
+
+    for(Product p : products) {
+
+        if (askMaxPrice > (p.getProductPrice()) && askMinPrice < (p.getProductPrice())){
+            matchingItems.add(p);
+        }
+
+    }
+
+    if(matchingItems.isEmpty()) {
+        System.out.printf("No item found within your price range");
+    }
+    System.out.println("Found " + matchingItems.size() + (matchingItems.size() == 1 ? " result." : " results." ));
+    displayProduct(matchingItems);
+    return matchingItems;
 }
